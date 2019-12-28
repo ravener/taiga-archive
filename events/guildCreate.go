@@ -21,8 +21,11 @@ func GuildCreate(s *discordgo.Session, g *discordgo.GuildCreate) {
 
     return
   }
-
   // A new guild joined.
+
+  // Set the new presence.
+  s.UpdateStatus(0, fmt.Sprintf("t!help | %d Servers!", len(s.State.Guilds)))
+
   owner, err := s.User(g.OwnerID)
   if err != nil { return }
 

@@ -17,6 +17,9 @@ func GuildDelete(s *discordgo.Session, g *discordgo.GuildDelete) {
     return
   }
 
+  // Set the new presence.
+  s.UpdateStatus(0, fmt.Sprintf("t!help | %d Servers!", len(s.State.Guilds)))
+
   owner, err := s.User(g.OwnerID)
   if err != nil { return }
 
