@@ -52,6 +52,7 @@ func main() {
 
   // Configure
   bot.OwnerID = "292690616285134850"
+  bot.Color = 0xDFAC7C
   bot.SetErrorHandler(utils.ErrorHandler)
 
   bot.SetPrefixHandler(func(bot *sapphire.Bot, msg *discordgo.Message, dm bool) string {
