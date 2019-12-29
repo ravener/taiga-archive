@@ -10,7 +10,7 @@ import (
 
 // Evaluates arbitrary Anko
 // Usage: <code:string...>
-func Anko(ctx *sapphire.CommandContext) {
+func OwnerAnko(ctx *sapphire.CommandContext) {
   e := env.NewEnv()
   stdout := &bytes.Buffer{}
 
