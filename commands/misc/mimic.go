@@ -29,7 +29,7 @@ func Mimic(ctx *sapphire.CommandContext) {
   ctx.Session.ChannelMessageDelete(ctx.Channel.ID, ctx.Message.ID)
 
   _, err = ctx.Session.WebhookExecute(w.ID, w.Token, false, &discordgo.WebhookParams{
-    Content:ctx.JoinedArgs(1),
+    Content: ctx.JoinedArgs(1),
     AvatarURL: user.AvatarURL("2048"),
   })
 

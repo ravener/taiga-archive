@@ -55,7 +55,7 @@ func main() {
   bot.Color = 0xDFAC7C
   bot.SetErrorHandler(utils.ErrorHandler)
 
-  bot.SetPrefixHandler(func(bot *sapphire.Bot, msg *discordgo.Message, dm bool) string {
+  bot.SetPrefixHandler(func(_ *sapphire.Bot, msg *discordgo.Message, dm bool) string {
     if dm { return "t!" }
     return db.GetPrefix(msg.GuildID)
   })
