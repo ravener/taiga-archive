@@ -5,7 +5,6 @@ import (
   "github.com/sapphire-cord/sapphire"
   "github.com/pollen5/taiga/constants"
   "github.com/dustin/go-humanize"
-  "strconv"
   "fmt"
 )
 
@@ -20,19 +19,15 @@ func GuildDelete(s *discordgo.Session, g *discordgo.GuildDelete) {
   // Set the new presence.
   s.UpdateStatus(0, fmt.Sprintf("t!help | %d Servers!", len(s.State.Guilds)))
 
-  owner, err := s.User(g.OwnerID)
-  if err != nil { return }
-
+	// Unfortunately all the API gives us is just an ID and wether it is unavailable
+	// And discordgo already cleared it from the cache by this point.
+	// So best we can show is the ID and the created time.
   created, _ := discordgo.SnowflakeTimestamp(g.ID)
 
-  s.ChannelMessageSendEmbed(constants.GuildLogsChannelID, sapphire.NewEmbed().
+	s.ChannelMessageSendEmbed(constants.GuildLogsChannelID, sapphire.NewEmbed().
     SetTitle(fmt.Sprintf("%s has left a server.", s.State.User.Username)).
-    SetDescription(g.Name).
-    SetThumbnail(g.IconURL()).
+    SetDescription(g.ID).
     SetColor(0xFF0000).
-    AddField("Owner", owner.String()).
-    AddField("Member Count", strconv.Itoa(g.MemberCount)).
     AddField("Created At", fmt.Sprintf("%s (%s)", created.Format("2 January 2006"), humanize.Time(created))).
-    SetFooter(g.ID).
     Build())
 }
