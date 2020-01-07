@@ -1,8 +1,8 @@
 package events
 
 import (
-  "github.com/bwmarrin/discordgo"
-  "github.com/pollen5/minori"
+	"github.com/bwmarrin/discordgo"
+	"github.com/pollen5/minori"
 )
 
 var logger = minori.GetLogger("Events")
@@ -13,7 +13,7 @@ var logger = minori.GetLogger("Events")
 var guildsCache = make(map[string]bool)
 
 func Init(s *discordgo.Session) {
-  s.AddHandler(Ready)
-  s.AddHandler(GuildCreate)
-  s.AddHandler(GuildDelete)
+	s.AddHandler(Ready)
+	s.AddHandler(GuildCreate)
+	s.AddHandler(GuildDelete)
 }

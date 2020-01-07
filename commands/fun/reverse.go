@@ -1,8 +1,8 @@
 package fun
 
 import (
-  "strings"
-  "github.com/sapphire-cord/sapphire"
+	"github.com/sapphire-cord/sapphire"
+	"strings"
 )
 
 // Reverses a given input
@@ -10,11 +10,11 @@ import (
 // Aliases: rev
 func Reverse(ctx *sapphire.CommandContext) {
 
-  var chars []string = strings.Split(ctx.JoinedArgs(), "");
+	var chars []string = strings.Split(ctx.JoinedArgs(), "")
 
-  for i, j := 0, len(chars)-1; i < j; i, j = i+1, j-1 {
-    chars[i], chars[j] = chars[j], chars[i]
-  }
+	for i, j := 0, len(chars)-1; i < j; i, j = i+1, j-1 {
+		chars[i], chars[j] = chars[j], chars[i]
+	}
 
-  ctx.Reply(sapphire.Escape(strings.Join(chars, "")))
+	ctx.Reply(sapphire.Escape(strings.Join(chars, "")))
 }
