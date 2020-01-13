@@ -3,6 +3,7 @@ package config
 import (
 	"github.com/pollen5/taiga/db"
 	"github.com/sapphire-cord/sapphire"
+	"github.com/bwmarrin/discordgo"
 )
 
 // TODO: permissions
@@ -19,6 +20,17 @@ func Prefix(ctx *sapphire.CommandContext) {
 		return
 	}
 
+	member, err := ctx.Session.State.Member(ctx.Guild.ID, ctx.Author.ID)
+
+	if err != nil {
+		ctx.Error(err)
+	}
+
+	if !sapphire.PermissionsForMember(ctx.Guild, member).Has(discordgo.PermissionManageServer) {
+		ctx.Reply("You need the **Manage Server** permission to use this command.")
+		return
+	}
+
 	prefix := ctx.Arg(0).AsString()
 
 	// Set a soft limit to prevent spam.
@@ -27,7 +39,7 @@ func Prefix(ctx *sapphire.CommandContext) {
 		return
 	}
 
-	_, err := db.Exec("INSERT INTO guilds (id, prefix) VALUES ($1, $2) ON CONFLICT (id) DO UPDATE SET prefix=$2", ctx.Guild.ID, prefix)
+	_, err = db.Exec("INSERT INTO guilds (id, prefix) VALUES ($1, $2) ON CONFLICT (id) DO UPDATE SET prefix=$2", ctx.Guild.ID, prefix)
 	if err != nil {
 		ctx.Error(err)
 		return
