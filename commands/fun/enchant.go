@@ -3,13 +3,14 @@ package fun
 import (
 	"github.com/sapphire-cord/sapphire"
 	"github.com/pollen5/taiga/utils"
+	"strings"
 )
 
 // Convert your text into minecraft enchantment table language
 // Aliases: enchantify
 // Usage: <text:string...>
 func Enchant(ctx *sapphire.CommandContext) {
-	ctx.Reply(utils.NewString(ctx.JoinedArgs()).
+	ctx.Reply(utils.NewString(strings.ToLower(ctx.JoinedArgs())).
 	  Replace("a", "ᔑ").
 		Replace("b", "ʖ").
     Replace("c", "ᓵ").
