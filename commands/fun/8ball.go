@@ -29,7 +29,7 @@ var responses = []string{
 }
 
 // Ask the magic 8ball a question!
-// Usage: <question...>
+// Usage: <question:string...>
 // Aliases: 8ball
 func Eightball(ctx *sapphire.CommandContext) {
 	ctx.Reply(responses[utils.RandNumber(len(responses))])
