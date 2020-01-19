@@ -1,4 +1,4 @@
-# Aisaka Taiga (アイサカ•タイガ)
+# Aisaka Taiga (逢坂•大河)
 [![Discord](https://discordapp.com/api/guilds/397479560876261377/embed.png)](https://discord.gg/mDkMbEh)
 
 A [Discord](https://discordapp.com) Bot written in [Golang](https://golang.org) with [discordgo](https://github.com/bwmarrin/discordgo) and the [Sapphire Framework](https://github.com/sapphire-cord/sapphire)
