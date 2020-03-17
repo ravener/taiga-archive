@@ -46,6 +46,7 @@ func Init(bot *sapphire.Bot) {
 	bot.AddCommand(sapphire.NewCommand("numberfact", "Fun", fun.Numberfact).SetDescription("Get a fact about a number.").SetUsage("[number:int]").AddAliases("numfact", "numfacts", "numbefacts"))
 	bot.AddCommand(sapphire.NewCommand("packagephobia", "Developer", developer.PackagePhobia).SetDescription("Shows the install/publish size of a npm package.").SetUsage("<package:string>").AddAliases("npmsize"))
 	bot.AddCommand(sapphire.NewCommand("paginate", "Test", test.Paginate).SetDescription("Tests sapphire's paginator."))
+	bot.AddCommand(sapphire.NewCommand("ping", "General", general.Ping))
 	bot.AddCommand(sapphire.NewCommand("prefix", "Config", config.Prefix).SetDescription("Sets the prefix for this server.").SetUsage("[prefix:string]").SetGuildOnly(true).AddAliases("setprefix", "changeprefix"))
 	bot.AddCommand(sapphire.NewCommand("quote", "Utility", utility.Quote).SetDescription("Quote a message by ID.").SetUsage("<message:string>").SetGuildOnly(true))
 	bot.AddCommand(sapphire.NewCommand("reverse", "Fun", fun.Reverse).SetDescription("Reverses a given input").SetUsage("<text...>").AddAliases("rev"))
