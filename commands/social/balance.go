@@ -1,8 +1,7 @@
 package social
 
 import (
-	"github.com/dustin/go-humanize"
-	"github.com/pollen5/taiga/constants"
+	"github.com/pollen5/taiga/constants/responses"
 	"github.com/pollen5/taiga/db"
 	"github.com/sapphire-cord/sapphire"
 )
@@ -20,10 +19,16 @@ func Balance(ctx *sapphire.CommandContext) {
 			name = member.Nick
 		}
 
-		ctx.Reply("**%s-san**'s balance: **%s** %s", name,
-			humanize.Comma(db.GetBalance(member.User.ID, ctx.Guild.ID)), constants.Currency)
+		ctx.Reply(responses.OtherBalance(name, db.GetBalance(member.User.ID, ctx.Guild.ID)))
 		return
 	}
 
-	ctx.Reply("You have **%s** %s", humanize.Comma(db.GetBalance(ctx.Author.ID, ctx.Guild.ID)), constants.Currency)
+	name := ctx.Author.Username
+	member := ctx.Member(ctx.Author.ID)
+
+	if member != nil && member.Nick != "" {
+		name = member.Nick
+	}
+
+	ctx.Reply(responses.Balance(name, db.GetBalance(ctx.Author.ID, ctx.Guild.ID)))
 }
