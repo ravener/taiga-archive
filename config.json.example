@@ -1,0 +1,8 @@
+{
+  "bsapi": "This field is deprecated for now, will be updated later.",
+  "devtoken": "Token used for development mode, when running the binary with -dev",
+  "token": "Token used for logging in.",
+  "postgresql": "PostgreSQL Connection URI",
+  "genius": "https://genius.com API key, required for lyrics command.",
+  "wolfram": "Wolfram Key, for wolfram question querying."
+}
