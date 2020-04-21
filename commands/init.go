@@ -34,6 +34,7 @@ func Init(bot *sapphire.Bot) {
 	bot.AddCommand(sapphire.NewCommand("exec", "Owner", owner.OwnerExec).SetDescription("Executes shell commands.").SetOwnerOnly(true).SetUsage("<command:string...>"))
 	bot.AddCommand(sapphire.NewCommand("flags", "Test", test.Flags).SetDescription("Tests flags and args"))
 	bot.AddCommand(sapphire.NewCommand("github", "Developer", developer.Github).SetDescription("View a GitHub repository details.").SetUsage("<repo:string>").SetCooldown(3).AddAliases("gh"))
+	bot.AddCommand(sapphire.NewCommand("help", "General", general.Help).SetDescription("Shows a list of all commands.").SetUsage("[command:string]").AddAliases("h", "cmds", "commands"))
 	bot.AddCommand(sapphire.NewCommand("image", "Utility", utility.Image).SetDescription("Get an image from Bing.").SetUsage("<query:string...>").SetCooldown(5).AddAliases("imgsearch", "imagesearch", "searchimage", "searchimg", "img"))
 	bot.AddCommand(sapphire.NewCommand("info", "General", general.Info).SetDescription("Get some information about the bot.").SetGuildOnly(true).AddAliases("botinfo"))
 	bot.AddCommand(sapphire.NewCommand("insult", "Fun", fun.Insult).SetDescription("Insults who you mention.").SetUsage("<@user>"))
